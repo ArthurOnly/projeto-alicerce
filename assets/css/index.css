@@ -1,0 +1,14 @@
+* {
+    font-family: "Poppins", sans-serif;
+    color: #26361e
+}
+
+.text-stroke-blue {
+    text-shadow: -1px 0 #38b6ff, 0 1px #38b6ff, 1px 0 #38b6ff, 0 -1px #38b6ff;
+    color: white;
+}
+
+.text-stroke-green {
+    text-shadow: -1px 0 #00bf63, 0 1px #00bf63, 1px 0 #00bf63, 0 -1px #00bf63;
+    color: white;
+}

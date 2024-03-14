@@ -1,0 +1,151 @@
+<html lang="pt-br" style="scroll-behavior: smooth">
+  <head>
+    <title>Projeto Alicerce IFRN-CM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="assets/css/index.css"
+    />
+  </head>
+  <body
+  class="bg-green-50"
+    x-data="{
+    items: [],
+    pessoas: [],
+    async getItems() {
+      const response = await fetch('./assets/js/itens.json')
+      this.items = await response.json()
+    },
+    async getPessoas() {
+      const response = await fetch('./assets/js/pessoas.json')
+      this.pessoas = await response.json()
+    },
+    async loadData() {
+      this.getItems();
+      this.getPessoas();
+    }
+}"
+    x-init="loadData()"
+  >
+    <nav class="border-gray-200 px-4 bg-green-50 shadow-sm fixed w-screen z-10">
+      <div
+        class="max-w-6xl items-center flex w-full py-4 justify-between mx-auto w-full"
+      >
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="./assets/images/alicerce-min-logo.png" class="h-10"/>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap"
+            ><span class="text-stroke-blue">P</span><span class="text-stroke-green">rojeto</span><span class="text-red-500 font-base text-sm ml-1">ALICERCE</span></span
+          >
+        </a>
+        <div class="flex gap-4 hidden lg:flex">
+          <a href="#materiais" class="block py-2">Materiais</a>
+          <a href="#colaboradores" class="block py-2">Colaboradores</a>
+        </div>
+      </div>
+    </nav>
+    <section class="bg-green-50 pt-16">
+      <div class="flex flex-col lg:flex-row gap-4 max-w-6xl mx-auto w-full">
+      <div class="flex flex-col px-4 pt-16 pb-8 lg:py-16 justify-center">
+        <h1 class="font-bold text-5xl">Conheça o Projeto Alicerce</h1>
+        <p class="mt-2">
+          O Projeto Alicerce é um projeto de extensão do IFRN Campus
+          Ceará-Mirim.
+        </p>
+
+        <a
+          href="#materiais"
+          class="rounded-full shadow-lg p-4 text-white font-medium bg-green-400 hover:bg-green-400/75 mt-4 w-fit"
+          >Ver materiais</a
+        >
+      </div>
+      <div class="px-4 pb-16 lg:py-16 w-full">
+        <div
+          class="mx-auto rounded-lg shadow-lg w-full max-w-[480px] h-80 flex overflow-hidden relative"
+        >
+          <img
+            src="./assets//images/IFRN-IMG.jpg"
+            class="h-full object-cover absolute"
+          />
+        </div>
+      </div>
+    </div>
+    </section>
+    <section class="bg-green-100" id="materiais">
+      <div class="max-w-6xl mx-auto flex flex-col gap-4 px-4 py-16">
+        <div>
+          <h1 class="font-bold text-5xl mb-8">Materiais</h1>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <template x-for="item in items">
+            <div class="bg-white p-4 rounded w-full shadow-lg">
+              <div class="text-xl flex justify-between">
+                <span class="text-red-800 font-bold" x-text="item.type"
+                  >PDF</span
+                ><a x-bind:href="item.link" target="_blank" class="text-sm filter hover:brightness-125"
+                  ><img src="./assets/images/download-file-icon.webp" class="h-4" Download</a
+                >
+              </div>
+              <p class="font-medium text-xl mt-4" x-text="item.title">
+                Planos de aula diversos
+              </p>
+              <p class="text-gray-500" x-text="item.description">
+                Veja planos de aulas de diversas disiplinas...
+              </p>
+              <div class="mt-4 flex flex-row flex-wrap gap-2">
+                <template x-for="tag in item.tags">
+                  <span
+                    x-for="tag in item.tags"
+                    class="bg-stone-800 text-white rounded-full text-sm px-3 py-1 w-fit"
+                    x-text="tag"
+                    >SOMA</span
+                  >
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+    <section id="colaboradores">
+      <div class="max-w-6xl mx-auto flex flex-col gap-4 px-4 py-16">
+        <div>
+          <h1 class="font-bold text-5xl mb-8">Colaboradores</h1>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <template x-for="pessoa in pessoas">
+            <div class="group rounded-full h-64 w-64 relative overflow-hidden">
+              <img
+                :src="pessoa.link"
+                class="absolute transition group-hover:brightness-50"
+              />
+              <h1
+                class="transition absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-2xl text-white text-center opacity-0 group-hover:opacity-100"
+                x-text="pessoa.name"
+                >
+              </h1>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-stone-800">
+      <section class="p-4"></section>
+      <section class="p-4 bg-stone-900 text-center">
+        <a
+          class="text-stone-200"
+          href="https://www.linkedin.com/in/arthur-paiva-2202/"
+          >Desenvolvido por <span class="font-bold text-white">Arthur Medeiros</span></a
+        >
+      </section>
+    </footer>
+  </body>
+</html>
