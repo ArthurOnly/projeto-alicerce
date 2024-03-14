@@ -15,9 +15,10 @@
       rel="stylesheet"
       href="assets/css/index.css"
     />
+    <link rel="icon" type="image/png" href="./assets/images/alicerce-min-logo.png">
   </head>
   <body
-  class="bg-green-50"
+  class="bg-lime-50"
     x-data="{
     items: [],
     pessoas: [],
@@ -36,7 +37,7 @@
 }"
     x-init="loadData()"
   >
-    <nav class="border-gray-200 px-4 bg-green-50 shadow-sm fixed w-screen z-10">
+    <nav class="border-gray-200 px-4 bg-lime-50 shadow-sm fixed w-screen z-10">
       <div
         class="max-w-6xl items-center flex w-full py-4 justify-between mx-auto w-full"
       >
@@ -52,7 +53,7 @@
         </div>
       </div>
     </nav>
-    <section class="bg-green-50 pt-16">
+    <section class="bg-lime-50 pt-16 hero">
       <div class="flex flex-col lg:flex-row gap-4 max-w-6xl mx-auto w-full">
       <div class="flex flex-col px-4 pt-16 pb-8 lg:py-16 justify-center">
         <h1 class="font-bold text-5xl">Conheça o Projeto Alicerce</h1>
@@ -63,30 +64,26 @@
 
         <a
           href="#materiais"
-          class="rounded-full shadow-lg p-4 text-white font-medium bg-green-400 hover:bg-green-400/75 mt-4 w-fit"
+          class="rounded-full shadow-lg p-4 text-white font-medium bg-lime-400 hover:bg-lime-400/75 mt-4 w-fit"
           >Ver materiais</a
         >
       </div>
       <div class="px-4 pb-16 lg:py-16 w-full">
-        <div
-          class="mx-auto rounded-lg shadow-lg w-full max-w-[480px] h-80 flex overflow-hidden relative"
-        >
-          <img
-            src="./assets//images/IFRN-IMG.jpg"
-            class="h-full object-cover absolute"
+        <img
+            src="./assets/images/header-image.png"
+            class="h-full w-auto drop-shadow-lg"
           />
-        </div>
       </div>
     </div>
     </section>
-    <section class="bg-green-100" id="materiais">
+    <section class="bg-lime-100" id="materiais">
       <div class="max-w-6xl mx-auto flex flex-col gap-4 px-4 py-16">
         <div>
           <h1 class="font-bold text-5xl mb-8">Materiais</h1>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <template x-for="item in items">
-            <div class="bg-white p-4 rounded w-full shadow-lg">
+            <div class="bg-white p-4 rounded-xl w-full shadow-lg">
               <div class="text-xl flex justify-between">
                 <span class="text-red-800 font-bold" x-text="item.type"
                   >PDF</span
@@ -120,15 +117,15 @@
         <div>
           <h1 class="font-bold text-5xl mb-8">Colaboradores</h1>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 place-items-center">
           <template x-for="pessoa in pessoas">
-            <div class="group rounded-full h-64 w-64 relative overflow-hidden">
+            <div class="group rounded-full h-32 w-32 lg:h-48 lg:w-48 relative overflow-hidden">
               <img
                 :src="pessoa.link"
                 class="absolute transition group-hover:brightness-50"
               />
               <h1
-                class="transition absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-2xl text-white text-center opacity-0 group-hover:opacity-100"
+                class="transition absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-lg lg:text-2xl text-white text-center opacity-0 group-hover:opacity-100"
                 x-text="pessoa.name"
                 >
               </h1>
@@ -136,6 +133,16 @@
           </template>
         </div>
       </div>
+    </section>
+    <section class="bg-white">
+      <div class="max-w-6xl items-center flex w-full py-4 justify-between mx-auto w-full">
+      <div class="flex justify-center items-center w-full gap-8 lg:gap-12">
+        <img src="./assets/images/ifrn-logo.png" class="h-12 lg:h-24"/>
+        <img src="./assets/images/capes-logo.png" class="h-12 lg:h-20"/>
+        <img src="./assets/images/pibid-logo.png" class="h-12 lg:h-20"/>
+        <img src="./assets/images/pibid-cm-logo.jpg" class="h-12 lg:h-20"/>
+      </div>
+    </div>
     </section>
     <footer class="bg-stone-800">
       <section class="p-4"></section>
